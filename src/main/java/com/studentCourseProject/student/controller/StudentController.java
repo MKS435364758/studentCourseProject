@@ -17,32 +17,32 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    @GetMapping("all-students-info")
+    @GetMapping("all-students-info")        // Read operation
     public ResponseEntity<List> getAll(){
         return new ResponseEntity<>(studentService.getAll(),HttpStatus.OK);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/{name}")          // Read operation
     public ResponseEntity<Student> getByName(@PathVariable("name") String name){
         return new ResponseEntity<>(studentService.getByName(name), HttpStatus.OK);
     }
 
-    @GetMapping("/{year}")
+    @GetMapping("/{year}")      // Read operation
     public ResponseEntity<Student> getByName(@PathVariable("year") int year){
         return new ResponseEntity<>(studentService.getByYear(year), HttpStatus.OK);
     }
 
-    @PostMapping("addStudent")
+    @PostMapping("addStudent")          // Create operation
     public void addStudent(@RequestBody Student student){
         studentService.addStudent(student);
     }
 
-    @PutMapping("updateStudent")
+    @PutMapping("updateStudent")        // Update operation
     public void updateStudent(@RequestBody Student student){
         studentService.addStudent(student);
     }
 
-    @DeleteMapping("deleteStudent/id-{id}")
+    @DeleteMapping("deleteStudent/id-{id}")         // Delete operation
     public void deleteStudentById(@PathVariable("id") int id){
         studentService.deleteStudentById(id);
     }
